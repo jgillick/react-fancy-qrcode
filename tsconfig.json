@@ -1,0 +1,23 @@
+
+{
+  // see https://www.typescriptlang.org/tsconfig
+  "compilerOptions": {
+    "sourceRoot": "src",
+    "outDir": "./dist",
+    "target": "es5",
+    "jsx": "react",
+    "module": "commonjs",
+    "declaration": true,
+    "sourceMap": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedParameters": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+  },
+  "include": ["./src/**/*.tsx"],
+  "exclude": ["node_modules", "dist"]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "react-fancy-qrcode",
+  "version": "0.0.1",
+  "description": "Customizable QR code generated for React & React Native",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepare": "npm run build",
+    "clean": "rm -rf ./dist",
+    "build": "npm run clean && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jgillick/react-fancy-qrcode.git"
+  },
+  "keywords": [
+    "qrcode",
+    "react",
+    "react-native"
+  ],
+  "author": "Jeremy Gillick",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jgillick/react-fancy-qrcode/issues"
+  },
+  "homepage": "https://github.com/jgillick/react-fancy-qrcode#readme",
+  "devDependencies": {
+    "@types/qrcode": "^1.4.2",
+    "@types/react": "^17.0.43",
+    "@types/react-native": "^0.67.3",
+    "eslint": "^8.12.0",
+    "eslint-plugin-tsdoc": "^0.2.14",
+    "prettier": "^2.6.2",
+    "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.0",
+    "react": "^17.0.2",
+    "react-native": "^0.68.0",
+    "react-native-svg": "^12.3.0"
+  }
+}
