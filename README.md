@@ -35,3 +35,31 @@ npm install -S react-fancy-qrcode
 ```
 
 <img src="./example.png" width="400">
+
+## Saving QR Code Image
+
+You can use the react ref to download the image data from the QR code SVG.
+
+```jsx
+import React, { useCallback, useRef } from 'react';
+import QRCode, { QRCodeRef } from 'react-fancy-qrcode';
+
+function RenderQRCode() {
+
+  const svgRef = useRef<QRCodeRef>();
+  const download = useCallback(() => {
+    svgRef.current?.toDataURL((data) => {
+      console.log(data);
+    })
+  }, [svgRef.current])
+
+  return (
+    <QRCode
+      ref={svgRef}
+      value={"https://github.com/jgillick/react-fancy-qrcode"}
+      size={400}
+    />
+  )
+}
+
+```

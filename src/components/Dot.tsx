@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from "react";
 import { Rect } from "react-native-svg";
-import { OptionsContext } from "../";
+import { OptionsContext } from "../context";
 
 type PixelProps = {
   value: number;

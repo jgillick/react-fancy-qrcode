@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { G, Image } from "react-native-svg";
-import { OptionsContext } from "../";
+import { OptionsContext } from "../context";
 
 export default function Logo() {
   const {

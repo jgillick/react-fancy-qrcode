@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { G, Rect } from "react-native-svg";
-import { OptionsContext } from "../";
+import { OptionsContext } from "../context";
 
 type PositionPatternProps = {
   placement: "top-left" | "top-right" | "bottom-left";
