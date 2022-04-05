@@ -6,6 +6,20 @@ Customizable QR code generated for React &amp; React Native.
 
 This was inspired by the [react-native-qrcode-svg](https://github.com/awesomejerry/react-native-qrcode-svg) and intended to provide more customization.
 
+## Install
+
+With Yarn
+
+```bash
+yarn add react-fancy-qrcode
+```
+
+Or with npm
+
+```bash
+npm install -S react-fancy-qrcode
+```
+
 ## Example
 
 ```jsx
