@@ -1,6 +1,5 @@
 import React from "react";
-import { ImageSourcePropType } from "react-native";
-import { SVGObject } from "../types";
+import { SVGObject, ImageSourcePropType } from "../types";
 
 type LogoProps = {
   size: number;

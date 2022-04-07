@@ -4,6 +4,8 @@ type ColorGradient = [string, string];
 type ColorGradientDirection = [string, string, string, string];
 export type PositionRadius = string | number | { rx: string; ry: string };
 
+export type ImageSourcePropType = string | { uri: string } | NodeRequire;
+
 export type ErrorCorrection = "L" | "M" | "Q" | "H";
 
 export type QRCodeRef = Component<any, any, any> & {
