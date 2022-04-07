@@ -2,9 +2,9 @@
   "name": "react-fancy-qrcode",
   "version": "0.0.1-alpha.4",
   "description": "Customizable QR code generated for React & React Native",
-  "types": "dist/index.d.ts",
-  "main": "dist/index.web.js",
-  "react-native": "dist/index.native.js",
+  "types": "dist/types.d.ts",
+  "main": "dist/web.js",
+  "react-native": "dist/native.js",
   "files": [
     "dist/*"
   ],
@@ -33,13 +33,11 @@
   "devDependencies": {
     "@types/qrcode": "^1.4.2",
     "@types/react": "^17.0.43",
-    "@types/react-native": "^0.67.3",
     "typescript": "^4.6.3"
   },
   "dependencies": {
     "qrcode": "^1.5.0",
     "react": "^17.0.1",
-    "react-native": "^0.64.3",
     "react-native-svg": "^12.3.0"
   }
 }
