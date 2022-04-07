@@ -2,9 +2,7 @@
 
 Customizable QR code generated for React &amp; React Native.
 
-<img src="./examples/logo.png" width="200">
-<img src="./examples/logo_dots.png" width="200">
-<img src="./examples/dots_color.png" width="200">
+<img src="./examples/logo.png" width="200"> <img src="./examples/logo_dots.png" width="200"> <img src="./examples/dots_color.png" width="200">
 
 This project was inspired by [react-native-qrcode-svg](https://github.com/awesomejerry/react-native-qrcode-svg).
 
