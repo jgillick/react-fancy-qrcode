@@ -1,5 +1,4 @@
-import React, { useMemo } from "react";
-import QRCodeGenerator from "qrcode";
+import React from "react";
 
 import { generateDataMatrix } from "../utils";
 import { QRCodeRef, QRCodeSVGProps } from "../types";

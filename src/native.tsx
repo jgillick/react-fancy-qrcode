@@ -23,9 +23,4 @@ const svgDom = {
 
 export default React.forwardRef<QRCodeRef, QRCodeProps>((props, ref) => {
   return <QRCode ref={ref} {...props} svgDom={svgDom} />;
-  // return (
-  //   <Svg width={100} height={100}>
-  //     <Rect x={0} y={0} width={100} height={100} fill={"blue"} />
-  //   </Svg>
-  // );
 });
