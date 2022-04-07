@@ -1,12 +1,12 @@
 import { Component } from "react";
-import { SvgProps } from "react-native-svg";
-import { ImageSourcePropType } from "react-native";
 
 type ColorGradient = [string, string];
 type ColorGradientDirection = [string, string, string, string];
-type PositionRadius = string | number | { rx: string; ry: string };
+export type PositionRadius = string | number | { rx: string; ry: string };
 
-export type QRCodeRef = Component<SvgProps, any, any> & {
+export type ErrorCorrection = "L" | "M" | "Q" | "H";
+
+export type QRCodeRef = Component<any, any, any> & {
   toDataURL: (cb: Function) => void;
 };
 
@@ -31,10 +31,10 @@ export type QRCodeProps = {
   /**
    * Logo image to place in the center of the QR code
    */
-  logo?: ImageSourcePropType;
+  logo?: any;
 
   /**
-   * How big to make the logo
+   * The size your logo should be.
    * Defaults to 20% of the QR code size.
    */
   logoSize?: number;
@@ -64,26 +64,7 @@ export type QRCodeProps = {
    * Color of the positioning squares in the top-left, top-right, and bottom-left.
    * Defaults to the color property
    */
-  positionPatternColor?: string | ColorGradient;
-
-  /**
-   * If positionPatternColor is defined as a linear gradient, this defines the gradient direction.
-   * Array format: [x1, y1, x2, y2]
-   * @default ['0%', '0%', '100%', '100%'],
-   */
-  positionPatternGradientDirection?: ColorGradientDirection;
-
-  /**
-   * Set this to a number between 0.1 - 1 in order to scale the QR code dots.
-   * @default 1
-   */
-  dotScale?: number;
-
-  /**
-   * The radius of each dot as a pixel or percent
-   * @default 0
-   */
-  dotRadius?: string | number;
+  positionColor?: string | ColorGradient;
 
   /**
    * The radius of the positioning pattern squares.
@@ -114,15 +95,59 @@ export type QRCodeProps = {
   positionRadius?: PositionRadius | PositionRadius[];
 
   /**
+   * If positionColor is defined as a linear gradient, this defines the gradient direction.
+   * Array format: [x1, y1, x2, y2]
+   * @default ['0%', '0%', '100%', '100%'],
+   */
+  positionGradientDirection?: ColorGradientDirection;
+
+  /**
+   * Set this to a number between 0.1 - 1 in order to scale the QR code dots.
+   * @default 1
+   */
+  dotScale?: number;
+
+  /**
+   * The radius of each dot as a pixel or percent
+   * @default 0
+   */
+  dotRadius?: string | number;
+
+  /**
    * QR Code error correction mode
    * @see https://en.wikipedia.org/wiki/QR_code#Error_correction
+   * @default M
    */
-  errorCorrection?: "L" | "M" | "Q" | "H";
+  errorCorrection?: ErrorCorrection;
 };
 
-export type ContextOptions = QRCodeProps & {
+/**
+ * SVG tags container
+ */
+export type SVGObject = {
+  Svg: React.ElementType; // React.SVGProps<SVGSVGElement>;
+  Defs: React.ElementType; // React.SVGProps<SVGDefsElement>;
+  G: React.ElementType; // React.SVGProps<SVGGElement>;
+  Rect: React.ElementType; // React.SVGProps<SVGRectElement>;
+  LinearGradient: React.ElementType; // React.SVGProps<SVGLineElement>;
+  Stop: React.ElementType; // React.SVGProps<SVGStopElement>;
+  Image: React.ElementType; // React.SVGProps<SVGImageElement>;
+};
+
+/**
+ * Main component props that includes the SVG package (web or react natve)
+ */
+export type QRCodeSVGProps = QRCodeProps & {
+  svgDom: SVGObject;
+};
+
+/**
+ * Options put in the context that get's sent to all child components.
+ */
+export type ContextOptions = QRCodeSVGProps & {
   color: string;
-  positionPatternColor: string;
+  positionColor: string;
+  margin: number;
 
   // The col/row the logo starts on
   logoStartCell: number;

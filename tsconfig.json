@@ -4,10 +4,11 @@
   "compilerOptions": {
     "sourceRoot": "src",
     "outDir": "./dist",
-    "lib": ["es2020"],
-    "target": "es2020",
+    "lib": ["es5"],
+    "target": "es5",
     "module": "esnext",
     "jsx": "react",
+    "module": "ES2015",
     "declaration": true,
     "sourceMap": true,
     "strict": true,

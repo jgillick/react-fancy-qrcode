@@ -1,37 +1,29 @@
-import React, { useContext } from "react";
-import { G, Image } from "react-native-svg";
-import { OptionsContext } from "../context";
+import React from "react";
+import { ImageSourcePropType } from "react-native";
+import { SVGObject } from "../types";
 
-export default function Logo() {
-  const {
-    size,
-    logo,
-    logoSize,
-    logoStartCell,
-    logoStopCell,
-    cellSize,
-    margin,
-  } = useContext(OptionsContext);
+type LogoProps = {
+  size: number;
+  logo: ImageSourcePropType;
+  logoSize: number;
+  svgDom: SVGObject;
+};
 
+export default function Logo({ size, logo, logoSize, svgDom }: LogoProps) {
   if (!logoSize) {
     return null;
   }
+  const logoPosition = (size - logoSize) / 2;
 
-  // Position logo inside the block cleared for the logo
-  const codeMargin = margin || 0;
-  const spaceSize = (logoStopCell - logoStartCell) * cellSize;
-  const logoPosition = (size - logoSize - codeMargin * 2) / 2;
-
+  const { Image } = svgDom;
+  // eslint-disable-next-line react-native-a11y/has-valid-accessibility-ignores-invert-colors
   return (
-    <G x={logoPosition} y={logoPosition}>
-      {/* eslint-disable-next-line react-native-a11y/has-valid-accessibility-ignores-invert-colors */}
-      <Image
-        width={logoSize}
-        height={logoSize}
-        preserveAspectRatio="xMidYMid slice"
-        href={logo}
-        clipPath="url(#clip-logo)"
-      />
-    </G>
+    <Image
+      x={logoPosition}
+      y={logoPosition}
+      width={logoSize}
+      height={logoSize}
+      href={logo}
+    />
   );
 }

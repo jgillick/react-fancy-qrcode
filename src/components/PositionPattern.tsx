@@ -1,17 +1,26 @@
-import React, { useContext } from "react";
-import { G, Rect } from "react-native-svg";
-import { OptionsContext } from "../context";
+import React from "react";
+import { SVGObject, PositionRadius } from "../types";
 
 type PositionPatternProps = {
   placement: "top-left" | "top-right" | "bottom-left";
+  cellSize: number;
+  sideCount: number;
+  positionColor: string;
+  positionRadius?: PositionRadius | PositionRadius[];
+  svgDom: SVGObject;
 };
 
 /**
  * Builds a positioning set of squares
  */
-export default function PositionPattern({ placement }: PositionPatternProps) {
-  const { cellSize, positionPatternColor, sideCount, positionRadius } =
-    useContext(OptionsContext);
+export default function PositionPattern({
+  placement,
+  cellSize,
+  positionColor,
+  sideCount,
+  positionRadius,
+  svgDom,
+}: PositionPatternProps) {
   const innerOffset = cellSize * 2;
   const innerSize = 3 * cellSize;
   let outerSize = 7 * cellSize;
@@ -28,16 +37,17 @@ export default function PositionPattern({ placement }: PositionPatternProps) {
   outerSize -= cellSize;
   const strokeCorrection = cellSize / 2;
 
-  // Get radii
+  // Get radius values
   let outerRx: number | string = 0;
   let outerRy: number | string = 0;
   let innerRx: number | string = 0;
   let innerRy: number | string = 0;
-
-  if (typeof positionRadius === "string") {
+  if (
+    typeof positionRadius === "string" ||
+    typeof positionRadius === "number"
+  ) {
     outerRx = outerRy = innerRx = innerRy = positionRadius;
-  }
-  if (Array.isArray(positionRadius)) {
+  } else if (Array.isArray(positionRadius)) {
     if (typeof positionRadius[0] === "object") {
       outerRx = positionRadius[0].rx;
       outerRy = positionRadius[0].ry;
@@ -53,6 +63,7 @@ export default function PositionPattern({ placement }: PositionPatternProps) {
     }
   }
 
+  const { G, Rect } = svgDom;
   return (
     <G>
       <Rect
@@ -60,17 +71,18 @@ export default function PositionPattern({ placement }: PositionPatternProps) {
         y={outerY + strokeCorrection}
         width={outerSize}
         height={outerSize}
-        stroke={positionPatternColor}
+        stroke={positionColor}
         strokeWidth={cellSize}
         rx={outerRx}
         ry={outerRy}
+        fillOpacity={0}
       />
       <Rect
         x={outerX + innerOffset}
         y={outerY + innerOffset}
         width={innerSize}
         height={innerSize}
-        fill={positionPatternColor}
+        fill={positionColor}
         rx={innerRx}
         ry={innerRy}
       />
