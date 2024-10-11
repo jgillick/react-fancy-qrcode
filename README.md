@@ -11,13 +11,13 @@ This project was inspired by [react-native-qrcode-svg](https://github.com/awesom
 With Yarn
 
 ```bash
-yarn add react-fancy-qrcode
+yarn add react-fancy-qrcode react-native-svg
 ```
 
 Or with npm
 
 ```bash
-npm install -S react-fancy-qrcode
+npm install -S react-fancy-qrcode react-native-svg
 ```
 
 For React native and iOS, you'll need to perform a pod-install:
